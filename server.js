@@ -11,6 +11,8 @@ app.set('views', __dirname + '/views')
 app.set('view engine', 'jsx')
 app.engine('jsx', require('express-react-views').createEngine())
 app.use(express.static('public'))
+const methodOverride = require('method-override')
+app.use(methodOverride('_method'))
 
 // ROUTES
 app.get('/', (req, res) => {
