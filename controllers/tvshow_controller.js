@@ -1,15 +1,19 @@
 const express = require('express')
 const tvshows = express.Router()
-const TVshow = require('../models/tvshows.js')
+const TvShow = require('../models/tvshow.js')
 
 // INDEX
 tvshows.get('/', (req, res) => {
-    res.send('This is the index at /tvshows')
+    res.render('Index',
+        {
+            tvshows: TvShow
+        }
+    )
 })
 
 // SHOW
-tvshows.get('/:arrayIndex', (req, res) => {
-    res.send(TVshow[req.params.arrayIndex])
+tvshows.get('/:id', (req, res) => {
+    res.send(TvShow[req.params.id])
 })
 
 module.exports = tvshows
