@@ -10,6 +10,7 @@ const app = express()
 app.set('views', __dirname + '/views')
 app.set('view engine', 'jsx')
 app.engine('jsx', require('express-react-views').createEngine())
+app.use(express.static('public'))
 
 // ROUTES
 app.get('/', (req, res) => {
@@ -20,9 +21,9 @@ app.get('/', (req, res) => {
 const tvshowController = require('./controllers/tvshow_controller.js')
 app.use('/tvshows', tvshowController)
 
-// TEST-icle ROUTE!
-app.get('/testicles', (req, res) => {
-    res.send('HEY! LICK 👅 MY BALLS!!!')
+// 404 PAGE
+app.get('*', (req, res) => {
+    res.render('error404')
 })
 
 // LISTEN

@@ -2,18 +2,26 @@ const express = require('express')
 const tvshows = express.Router()
 const TvShow = require('../models/tvshow.js')
 
-// INDEX
+// INDEX PAGE
 tvshows.get('/', (req, res) => {
     res.render('Index',
         {
-            tvshows: TvShow
+            tvshows: TvShow,
+            title: 'Index Page'
         }
     )
 })
 
-// SHOW
+// SHOW PAGE
 tvshows.get('/:id', (req, res) => {
-    res.send(TvShow[req.params.id])
+    if (TvShow[req.params.id]) {
+        res.render('Show', {
+            tvshow:TvShow[req.params.id]
+        })
+    } else {
+        res.render('error404')
+    }
 })
 
 module.exports = tvshows
+

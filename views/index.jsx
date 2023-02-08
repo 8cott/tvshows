@@ -1,9 +1,9 @@
 const React = require('react')
 const Default = require('./layouts/Default')
 
-function Index ({tvshows}) {
+function Index ({tvshows, title}) {
     return (
-        <Default>
+        <Default title={title}>
             <h1>Index Page 🗂️</h1>
             <ul>
                 {
