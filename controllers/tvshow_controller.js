@@ -12,19 +12,10 @@ tvshows.get('/', (req, res) => {
     )
 })
 
-// CREATE
-tvshows.post('/', (req, res) => {
-    if (!req.body.image) {
-        req.body.image = '/images/default-image.png'
-      }
-    console.log(req.body);
-    TvShow.push(req.body)
-    res.redirect('/tvshows')
-  })
-
 // UPDATE
-tvshows.put('/id', (req, res) => {
-
+tvshows.put('/:id', (req, res) => {
+    TvShow[req.params.id] = req.body
+    res.redirect(`/tvshows/${req.params.id}`)
 })
 
 // DELETE
@@ -36,6 +27,24 @@ tvshows.delete('/:id', (req, res) => {
 // NEW
 tvshows.get('/new', (req, res) => {
     res.render('new')
+})
+
+// CREATE
+tvshows.post('/', (req, res) => {
+    if (!req.body.image) {
+        req.body.image = '/images/default-image.png'
+      }
+    console.log(req.body);
+    TvShow.push(req.body)
+    res.redirect('/tvshows')
+  })
+
+// EDIT
+tvshows.get('/:id/edit', (req, res) => {
+    res.render('edit', {
+        tvshow: TvShow[req.params.id],
+        index: req.params.id
+    })
 })
 
 // SHOW 
