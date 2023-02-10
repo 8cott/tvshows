@@ -13,6 +13,8 @@ app.engine('jsx', require('express-react-views').createEngine())
 app.use(express.static('public'))
 const methodOverride = require('method-override')
 app.use(methodOverride('_method'))
+// data coming in from postman from urlencoded string
+app.use(express.urlencoded({extended: true}))
 
 // ROUTES
 app.get('/', (req, res) => {
@@ -32,3 +34,5 @@ app.get('*', (req, res) => {
 app.listen(PORT, () => {
     console.log('listening on port', PORT);
 })
+
+// NEXT LESSON: https://digitalskills.instructure.com/courses/7992/pages/code-along-be-5-restful-routes-update-and-edit?module_item_id=1054599

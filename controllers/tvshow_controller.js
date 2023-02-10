@@ -12,6 +12,32 @@ tvshows.get('/', (req, res) => {
     )
 })
 
+// CREATE
+tvshows.post('/', (req, res) => {
+    if (!req.body.image) {
+        req.body.image = '/images/default-image.png'
+      }
+    console.log(req.body);
+    TvShow.push(req.body)
+    res.redirect('/tvshows')
+  })
+
+// UPDATE
+tvshows.put('/id', (req, res) => {
+
+})
+
+// DELETE
+tvshows.delete('/:id', (req, res) => {
+    TvShow.splice(req.params.id, 1)
+    res.status(303).redirect('/tvshows')
+})
+
+// NEW
+tvshows.get('/new', (req, res) => {
+    res.render('new')
+})
+
 // SHOW 
 tvshows.get('/:id', (req, res) => {
     if (TvShow[req.params.id]) {
@@ -22,12 +48,6 @@ tvshows.get('/:id', (req, res) => {
     } else {
         res.render('error404')
     }
-})
-
-// DELETE
-tvshows.delete('/:id', (req, res) => {
-    TvShow.splice(req.params.id, 1)
-    res.status(303).redirect('/tvshows')
 })
 
 module.exports = tvshows

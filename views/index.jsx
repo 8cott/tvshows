@@ -19,6 +19,11 @@ function Index ({tvshows, title}) {
                 }
             </ul>
             {/* <h2>{tvshows[0].name}</h2> */}
+            <div className='newButton'>
+                <a href='/tvshows/new'>
+                    <button>Add TV Show</button>
+                </a>
+            </div>
         </Default>
     )
 }
