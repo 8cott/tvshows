@@ -3,7 +3,7 @@ const Default = require('./layouts/Default')
 
 function Edit ({tvshow, index}) {
      return (
-        <Default>
+        <Default title={tvshow.name}>
             <h2>Edit {tvshow.name}</h2>
             <form action={`/tvshows/${index}?_method=PUT`} method='POST'>
                 <label htmlFor='name'>Name</label>

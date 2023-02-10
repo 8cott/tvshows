@@ -1,5 +1,7 @@
 // DEPENDENCIES
 const express = require('express')
+const favicon = require('serve-favicon')
+const path = require('path')
 
 // CONFIGURATION
 require('dotenv').config()
@@ -7,6 +9,7 @@ const PORT = process.env.PORT
 const app = express()
 
 // MIDDLEWARE
+app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')))
 app.set('views', __dirname + '/views')
 app.set('view engine', 'jsx')
 app.engine('jsx', require('express-react-views').createEngine())
@@ -35,4 +38,8 @@ app.listen(PORT, () => {
     console.log('listening on port', PORT);
 })
 
-// NEXT LESSON: https://digitalskills.instructure.com/courses/7992/pages/code-along-be-5-restful-routes-update-and-edit?module_item_id=1054599
+// NEXT LESSON: https://digitalskills.instructure.com/courses/7992/pages/breadcrud-schema-be-7-mongoose-models-and-schemas?module_item_id=1054642
+
+// BONUS
+// ADD CSS
+// Make image field only accept http or https

@@ -3,7 +3,7 @@ const Default = require('./layouts/Default')
 
 function New () {
     return (
-        <Default>
+        <Default title='Add Show'>
             <h2>Add Show</h2>
             <form action='/tvshows' method='POST'>
                 <label htmlFor='name'>Name</label>

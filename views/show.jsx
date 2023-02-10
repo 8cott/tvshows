@@ -5,7 +5,7 @@ function Show ({tvshow, index}) {
     // confirmation that tvshow data is appearing in terminal
     // console.log(tvshow.name)
         return (
-            <Default>
+            <Default title={tvshow.name}>
                 <h2>Show Page</h2>
                 <h3>{tvshow.name} ({tvshow.year})</h3>
                 <img src={tvshow.image} alt={tvshow.name} />
